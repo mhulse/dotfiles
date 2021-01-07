@@ -66,8 +66,6 @@
   wipe = !git add --all && git commit --quiet --message='WIPE SAVEPOINT' && git reset head~1 --hard
 [core]
   autocrlf = false
-  # Custom global `.gitignore` file:
-	excludesfile = /Users/mhulse/.gitignore_global
   # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error:
   whitespace = space-before-tab,indent-with-non-tab,trailing-space
   # Watch for case changes:
@@ -116,14 +114,4 @@
 [transfer]
   # Do some extra checks when receiving or sending changes (this can make transfers a bit slower):
   fsckobjects = true
-[user]
-	name = Micky Hulse
-	email = mickyhulse@gmail.com
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/mhulse/.stCommitMsg
+
