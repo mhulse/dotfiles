@@ -12,6 +12,11 @@ function freshbrew() {
 }
 
 # Reloads session:
-function reload() {
-  source "$ZSH/oh-my-zsh.sh"
+# https://unix.stackexchange.com/a/326948/67282
+function _accept-line() {
+  if [[ $BUFFER == "." ]]; then
+    BUFFER="source ~/.zshrc"
+  fi
+  zle .accept-line
 }
+zle -N accept-line _accept-line

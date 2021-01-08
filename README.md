@@ -16,6 +16,12 @@ Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 1. **Font:** [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#fonts) (the config wizard did not prompt me, so I used the manual installation method)
 
-1. Bew install [fzf](https://github.com/junegunn/fzf)
+1. Brew install [fzf](https://github.com/junegunn/fzf)
 
-1. More coming soon!
+1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install node`, `nvm uninstall <version>`
+
+1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+
+1. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+
+More info coming soon!
