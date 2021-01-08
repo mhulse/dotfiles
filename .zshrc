@@ -14,6 +14,7 @@ plugins=(
   colored-man-pages
   colorize
   dotenv
+  fzf
   git
   osx
   zsh-autosuggestions
@@ -38,6 +39,12 @@ path+=("$HOME/scripts")
 
 # Prevent PATH from taking on duplicate entries:
 typeset -U path
+
+# Setting fd as the default source for fzf:
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+# To apply the command to CTRL-T as well:
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
