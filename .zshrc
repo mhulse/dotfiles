@@ -1,8 +1,12 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 DISABLE_UPDATE_PROMPT="true"
 
@@ -45,6 +49,12 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # To apply the command to CTRL-T as well:
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# p10k:
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
