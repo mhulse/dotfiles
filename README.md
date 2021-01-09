@@ -10,6 +10,8 @@ Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 ## Notes
 
+1. Using a Brew-installed latest version of zsh: `brew install zsh && sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells" && chsh -s /usr/local/bin/zsh` (see [this](https://stackoverflow.com/a/44549662/922323))
+
 1. In order to avoid putting personal info into version control, and to keep out cruft added by apps (I’m looking at you [Sourcetree](https://www.sourcetreeapp.com/)), the installation script creates a [`.gitignore`](.gitignore) and imports the one found in this repository.
 
 1. **Theme:** [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
