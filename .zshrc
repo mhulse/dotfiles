@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
 # Save the location of the current completion dump file:
+# https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-624221366
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -35,6 +36,30 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 export JRE_HOME=$(/usr/libexec/java_home)
 export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Place this after nvm initialization!
+# TODO: Put this somewhere more organized.
+# https://github.com/nvm-sh/nvm#zsh
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 # For Homebrew:
 path=("/usr/local/sbin" $path)
