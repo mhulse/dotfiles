@@ -26,4 +26,11 @@ Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 1. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
+1. Load [iTerm2 prefs](com.googlecode.iterm2.plist) via <kbd>iTerm2</kbd> → <kbd>Preferences…</kbd> → <kbd>General</kbd> → <kbd>Preferences</kbd>
+
+  - By default, word jumps (option + → or ←) and word deletions (option + backspace) do not work. To enable these, go to <kbd>iTerm</kbd> → <kbd>Preferences…</kbd> → <kbd>Profiles</kbd> → <kbd>Keys</kbd> → <kbd>Presets…</kbd> → <kbd>Natural Text Editing</kbd>
+  - <kbd>iTerm2</kbd> → <kbd>Preferences…</kbd> → <kbd>Keys</kbd> → <kbd>Key Bindings</kbd> and create a new mapping <kbd>⌘</kbd> + <kbd>K</kbd> to “Send Hex Codes”: `0x0c` ([reference](https://superuser.com/a/1036168/201992))
+  - Color preset: [ayu](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/ayu.itermcolors)
+  - <kbd>iTerm2</kbd> → <kbd>Preferences…</kbd> → <kbd>Profiles</kbd> → <kbd>Text</kbd>, enable “Box” and “Blinking” for Cursor.
+
 More info coming soon!
