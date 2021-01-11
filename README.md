@@ -20,7 +20,7 @@ Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 1. Brew install [fzf](https://github.com/junegunn/fzf)
 
-1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install node`, `nvm uninstall <version>`
+1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install --lts` (latest “Long-Term Support” release), `nvm uninstall <version>`
 
 1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
