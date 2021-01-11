@@ -4,7 +4,9 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
-export ZSH_COMPDUMP="$XDG_CACH_HOME/zsh/zcompdump"
+
+# Save the location of the current completion dump file:
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
