@@ -1,5 +1,5 @@
 # Freshen up your HomeBrew!
-# $ frewshbrew [cask]
+# frewshbrew [cask]
 function freshbrew() {
   brew doctor
   brew update
@@ -11,8 +11,16 @@ function freshbrew() {
   brew doctor
 }
 
-# Reloads session:
+# Create new feature feature branch from name
+# nb <feature branch name>
+function nb() {
+  readonly name=${1:?"Missing name!"}
+  git checkout -b "feature/$name"
+}
+
+# Reload current session
 # https://unix.stackexchange.com/a/326948/67282
+# .
 function _accept-line() {
   if [[ $BUFFER == "." ]]; then
     BUFFER="source ~/.zshrc"
