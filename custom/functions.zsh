@@ -13,7 +13,7 @@ function freshbrew() {
 
 # Create new feature feature branch from name
 # nb <feature branch name>
-function nb() {
+function b() {
   readonly name=${1:?"Missing name!"}
   git checkout -b "feature/$name"
 }
