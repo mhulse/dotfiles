@@ -85,6 +85,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# jENV https://www.jenv.be/
+if ! type "$jenv" > /dev/null; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
+
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
