@@ -5,7 +5,7 @@ function freshbrew () {
   brew update
   brew upgrade
   if [[ "$1" = "cask" ]]; then
-      brew cask upgrade
+      brew upgrade --cask
   fi
   brew cleanup
   brew doctor

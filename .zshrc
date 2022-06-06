@@ -1,6 +1,12 @@
+# OK to perform console I/O before this point.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+# From this point on, until zsh is fully initialized, console input won't work and
+# console output may appear uncolored.
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
@@ -24,7 +30,7 @@ plugins=(
   dotenv
   fzf
   git
-  osx
+  macos
   zsh-autosuggestions
   zsh-nvm
   zsh-syntax-highlighting
@@ -84,6 +90,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TODO: Create file for autocompleters!
+# Angular CLI autocompletion:
+source <(ng completion script)
 
 # jENV https://www.jenv.be/
 if ! type "$jenv" > /dev/null; then
