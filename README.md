@@ -6,6 +6,8 @@ zsh + oh-my-zsh
 
 1. Install [Homebrew](https://brew.sh/)
 
+1. Install [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
+
 1. Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 ## Notes
