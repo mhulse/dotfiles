@@ -25,23 +25,15 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
-  colored-man-pages
-  colorize
   dotenv
-  fzf
   git
-  macos
   zsh-autosuggestions
   zsh-nvm
-  zsh-syntax-highlighting
 )
 # Plugins ☝️ MUST be sourced first!
 source $ZSH/oh-my-zsh.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
-
-export JRE_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Place this after nvm initialization!
 # TODO: Put this somewhere more organized.
@@ -79,17 +71,8 @@ path+=("$HOME/scripts")
 # Prevent PATH from taking on duplicate entries:
 typeset -U path
 
-# Setting fd as the default source for fzf:
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-
-# To apply the command to CTRL-T as well:
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # p10k:
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # TODO: Create file for autocompleters!
 # Angular CLI autocompletion:
