@@ -2,8 +2,6 @@
 
 zsh + oh-my-zsh
 
-*Inspired by [@nqthqn](https://github.com/nqthqn/)’s [dotfiles](https://github.com/nqthqn/dotfiles)!*
-
 ## Installation
 
 Clone repo in home directory, then run [`install.zsh`](install.zsh).
