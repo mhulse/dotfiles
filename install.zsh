@@ -1,6 +1,5 @@
 # Symlink these files:
 files=(
-  ".tmux.conf"
   ".zshrc"
 )
 
