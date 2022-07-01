@@ -4,7 +4,9 @@ zsh + oh-my-zsh
 
 ## Installation
 
-Clone repo in home directory, then run [`install.zsh`](install.zsh).
+1. Install [Homebrew](https://brew.sh/)
+
+1. Clone repo in home directory, then run [`install.zsh`](install.zsh).
 
 ## Notes
 
