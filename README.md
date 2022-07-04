@@ -20,6 +20,8 @@ Install:
 
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
+1. [SDKMAN!](https://sdkman.io/install)
+
 Next, reload your profile by typeing `.` at the command prompt.
 
 Run:
