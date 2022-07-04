@@ -8,7 +8,7 @@ Install:
 
 1. [Homebrew](https://brew.sh/)
 
-1. [nvm](https://github.com/nvm-sh/nvm)
+1. [nvm](https://github.com/nvm-sh/nvm), then `nvm install --lts`
 
 1. Clone repo in home directory, then run [`install.zsh`](install.zsh)
 
@@ -21,6 +21,13 @@ Install:
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
 Next, reload your profile by typeing `.` at the command prompt.
+
+Run:
+
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
 
 ## Tips
 
