@@ -22,6 +22,13 @@ Install:
 
 Next, reload your profile by typeing `.` at the command prompt.
 
+Run:
+
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+
 ## Tips
 
 1. In order to avoid putting personal info into version control, and to keep out cruft added by apps (I’m looking at you [Sourcetree](https://www.sourcetreeapp.com/)), the installation script creates a [`.gitignore`](.gitignore) and imports the one found in this repository.
