@@ -8,7 +8,7 @@ Install:
 
 1. [Homebrew](https://brew.sh/)
 
-1. [nvm](https://github.com/nvm-sh/nvm)
+1. [nvm](https://github.com/nvm-sh/nvm), then `nvm install --lts`
 
 1. Clone repo in home directory, then run [`install.zsh`](install.zsh)
 
