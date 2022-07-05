@@ -45,5 +45,6 @@ git config --global user.name "Your Name"
     - <kbd>iTerm2</kbd> → <kbd>Preferences…</kbd> → <kbd>Keys</kbd> → <kbd>Key Bindings</kbd> and create a new mapping <kbd>⌘</kbd> + <kbd>K</kbd> to “Send Hex Codes”: `0x0c` ([reference](https://superuser.com/a/1036168/201992))
     - Color preset: [ayu](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/ayu.itermcolors)
     - <kbd>iTerm2</kbd> → <kbd>Preferences…</kbd> → <kbd>Profiles</kbd> → <kbd>Text</kbd>, enable “Box” and “Blinking” for Cursor.
+    - Enable “Unlimited scrollback” in your profile → <kbd>Terminal</kbd> → <kbd>Scrollback Buffer</kbd>
 
 More info coming soon!
