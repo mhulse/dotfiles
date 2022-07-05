@@ -18,7 +18,7 @@ Install:
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
-1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k), with [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#fonts)
 
 1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open`
 
@@ -36,8 +36,6 @@ git config --global user.name "Your Name"
 1. In order to avoid putting personal info into version control, and to keep out cruft added by apps (I’m looking at you [Sourcetree](https://www.sourcetreeapp.com/)), the installation script creates a [`.gitignore`](.gitignore) and imports the one found in this repository.
 
 1. Always show hidden files on macOS: `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
-
-1. **Font:** [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#fonts) (the config wizard did not prompt me, so I used the manual installation method)
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install --lts` (latest “Long-Term Support” release), `nvm uninstall <version>`
 
