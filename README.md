@@ -8,9 +8,9 @@ Install:
 
 1. [Homebrew](https://brew.sh/)
 
-1. [nvm](https://github.com/nvm-sh/nvm), then `nvm install --lts`
+1. [nvm](https://github.com/nvm-sh/nvm), then run: `nvm install --lts`
 
-1. Clone repo in home directory, then run [`install.zsh`](install.zsh)
+1. Clone repo in home directory, then run: [`install.zsh`](install.zsh)
 
 1. [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 
@@ -20,7 +20,7 @@ Install:
 
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-1. [SDKMAN!](https://sdkman.io/install)
+1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open`
 
 Next, reload your profile by typeing `.` at the command prompt.
 
