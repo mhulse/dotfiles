@@ -35,7 +35,12 @@ git config --global user.name "Your Name"
 
 1. In order to avoid putting personal info into version control, and to keep out cruft added by apps (I’m looking at you [Sourcetree](https://www.sourcetreeapp.com/)), the installation script creates a [`.gitignore`](.gitignore) and imports the one found in this repository.
 
-1. Always show hidden files on macOS: `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
+1. Always show hidden files: `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
+
+1. Disable Screen Capture
+
+    - Drop shadow: `defaults write com.apple.screencapture disable-shadow -bool true`
+    - Thumbnail preview: `defaults write com.apple.screencapture show-thumbnail -bool false`
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install --lts` (latest “Long-Term Support” release), `nvm uninstall <version>`
 
