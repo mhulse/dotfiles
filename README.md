@@ -37,7 +37,7 @@ git config --global user.name "Your Name"
 
 1. Always show hidden files: `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
 
-1. Disable Screen Capture
+1. Disable Screen Capture’s …
 
     - Drop shadow: `defaults write com.apple.screencapture disable-shadow -bool true`
     - Thumbnail preview: `defaults write com.apple.screencapture show-thumbnail -bool false`
