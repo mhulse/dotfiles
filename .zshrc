@@ -11,6 +11,9 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
+# https://github.com/lukechilds/zsh-nvm#auto-use
+export NVM_AUTO_USE=true
+
 # Save the location of the current completion dump file:
 # https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-624221366
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
