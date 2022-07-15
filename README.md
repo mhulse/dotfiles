@@ -20,7 +20,7 @@ Install:
 
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k), with [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#fonts)
 
-1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open`
+1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open && sdk install gradle`
 
 Next, reload your profile by typeing `.` at the command prompt.
 
