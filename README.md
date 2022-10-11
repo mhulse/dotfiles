@@ -4,13 +4,19 @@ zsh + oh-my-zsh
 
 ## Installation
 
-Install:
+### System
 
 1. [Homebrew](https://brew.sh/)
 
 1. [nvm](https://github.com/nvm-sh/nvm), then run: `nvm install --lts`
 
 1. Clone repo in home directory, then run: [`install.zsh`](install.zsh)
+
+1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open && sdk install gradle`
+
+### Zsh
+
+**Important:** Install plugins and themes to `dotfiles/custom/`!
 
 1. [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 
@@ -19,8 +25,6 @@ Install:
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k), with [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#meslo-nerd-font-patched-for-powerlevel10k) (`p10k configure`)
-
-1. [SDKMAN!](https://sdkman.io/install), after the installation steps, run: `sdk install java 18.0.1.1-open && sdk install gradle`
 
 Next, reload your profile by typeing `.` at the command prompt.
 
