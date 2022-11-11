@@ -9,6 +9,9 @@ function freshbrew () {
   fi
   brew cleanup
   brew doctor
+  # List installed dependencies as tree:
+  echo "Installed:"
+  brew deps --tree --installed
 }
 
 # Create new feature feature branch from name
