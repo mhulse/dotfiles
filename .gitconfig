@@ -19,8 +19,8 @@
   aa = add --all
   aliases = config --get-regexp alias
   amend = commit --all --amend
-  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+  bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
   br = branch
   branches = branch -a
   brm = branch --move # <new-branch-name>
@@ -32,8 +32,8 @@
   co = checkout
   cob = checkout -b # <new-branch-name>
   col = checkout -
-  com = checkout master
-  comf = checkout origin/master # <file-path> OR <file-name>
+  com = checkout main
+  comf = checkout origin/main # <file-path> OR <file-name>
   df = diff
   fps = !git fetch && git pull && git status
   g = grep -I
@@ -47,8 +47,8 @@
    # Delete any local branches which have been deleted from the remote:
   prune = fetch --prune
   rb = rbranch
-  rbm = rebase master
-  rbmi = rebase --interactive master
+  rbm = rebase main
+  rbmi = rebase --interactive main
   rc = rank-contributors
   remotes = remote --verbose
   rv = review
