@@ -8,6 +8,8 @@ zsh + oh-my-zsh
 
 1. [Homebrew](https://brew.sh/)
 
+1. [Git](https://git-scm.com/download/mac) `brew install git`
+
 1. [nvm](https://github.com/nvm-sh/nvm), then run: `nvm install --lts`
 
 1. Clone repo in home directory, then run: [`install.zsh`](install.zsh)
