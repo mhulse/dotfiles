@@ -24,6 +24,8 @@ zsh + oh-my-zsh
 
 1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
+1. [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
 1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k), with [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#meslo-nerd-font-patched-for-powerlevel10k) (`p10k configure`)
