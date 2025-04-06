@@ -1,6 +1,7 @@
 # Symlink these files:
 files=(
   ".zshrc"
+  ".zprofile"
 )
 
 for i in "${files[@]}"
