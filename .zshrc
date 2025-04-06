@@ -1,5 +1,8 @@
 echo "✅ .zshrc loaded"
 
+# Add Homebrew to PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export ZSH="$HOME/.oh-my-zsh"
 # Custom directory for plugins and any *.zsh files to be auto-sourced by Oh My Zsh
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
@@ -29,9 +32,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export MANPATH="/usr/local/man:$MANPATH"
-
-# For Homebrew:
-path=("/usr/local/sbin" $path)
 
 # Custom executables:
 path+=("$HOME/scripts")
