@@ -1,13 +1,3 @@
-# OK to perform console I/O before this point.
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-# From this point on, until zsh is fully initialized, console input won't work and
-# console output may appear uncolored.
-
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
@@ -49,9 +39,6 @@ path+=("$HOME/scripts")
 
 # Prevent PATH from taking on duplicate entries:
 typeset -U path
-
-# p10k:
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # nvm:
 export NVM_DIR="$HOME/.nvm"

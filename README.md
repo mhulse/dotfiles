@@ -28,8 +28,6 @@ zsh + oh-my-zsh
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
-1. [Powerlevel10k](https://github.com/romkatv/powerlevel10k), with [Meslo Nerd Font patched for Powerlevel10k](https://github.com/romkatv/powerlevel10k/blob/master/README.md#meslo-nerd-font-patched-for-powerlevel10k) (`p10k configure`)
-
 Next, reload your profile by typeing `.` at the command prompt.
 
 Run:
