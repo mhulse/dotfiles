@@ -1,6 +1,7 @@
 echo "✅ .zshrc loaded"
 
 export ZSH="$HOME/.oh-my-zsh"
+# Custom directory for plugins and any *.zsh files to be auto-sourced by Oh My Zsh
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
 # https://github.com/lukechilds/zsh-nvm#auto-use
