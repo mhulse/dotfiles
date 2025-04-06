@@ -1,3 +1,5 @@
+echo "✅ .zshrc loaded"
+
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
@@ -8,14 +10,13 @@ export NVM_AUTO_USE=true
 # https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-624221366
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
-# https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
 DISABLE_UPDATE_PROMPT="true"
 
 COMPLETION_WAITING_DOTS="true"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+ZSH_THEME="clean"
 
 plugins=(
   dotenv
