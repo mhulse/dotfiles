@@ -21,7 +21,7 @@ DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Fix for compdump conflicts:
+# Prevent compdump conflicts
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
 # Plugins ☝️ must be sourced first!
@@ -41,9 +41,13 @@ path+=("$HOME/scripts")
 typeset -U path  # Remove path duplicates
 
 # ---------------------------------------
-# Node (nvm)
+# Node (nvm + yarn)
 # ---------------------------------------
 export NVM_AUTO_USE=true
+
+# Add Yarn global bin paths if they exist
+[ -d "$HOME/.yarn/bin" ] && path+=("$HOME/.yarn/bin")
+[ -d "$HOME/.config/yarn/global/node_modules/.bin" ] && path+=("$HOME/.config/yarn/global/node_modules/.bin")
 
 # ---------------------------------------
 # Ruby (rbenv)
