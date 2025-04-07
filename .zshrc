@@ -45,6 +45,11 @@ typeset -U path  # Remove path duplicates
 # ---------------------------------------
 export NVM_AUTO_USE=true
 
+# Add global npm binaries to path (for node-gyp etc.)
+if command -v npm &>/dev/null; then
+  export PATH="$(npm bin -g):$PATH"
+fi
+
 # Add Yarn global bin paths if they exist
 [ -d "$HOME/.yarn/bin" ] && path+=("$HOME/.yarn/bin")
 [ -d "$HOME/.config/yarn/global/node_modules/.bin" ] && path+=("$HOME/.config/yarn/global/node_modules/.bin")
