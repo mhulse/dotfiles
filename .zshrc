@@ -1,47 +1,59 @@
 echo "✅ .zshrc loaded"
 
-# Add Homebrew to PATH
+# ---------------------------------------
+# Homebrew
+# ---------------------------------------
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export MANPATH="/usr/local/man:$MANPATH"
 
+# Add PostgreSQL 14 to PATH if installed
+if [ -d "/opt/homebrew/opt/postgresql@14/bin" ]; then
+  export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
+fi
+
+# ---------------------------------------
+# Oh My Zsh
+# ---------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
-# Custom directory for plugins and any *.zsh files to be auto-sourced by Oh My Zsh
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
-
-# https://github.com/lukechilds/zsh-nvm#auto-use
-export NVM_AUTO_USE=true
-
-# Save the location of the current completion dump file:
-# https://github.com/ohmyzsh/ohmyzsh/issues/7332#issuecomment-624221366
-ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
-
+ZSH_THEME="clean"
 DISABLE_UPDATE_PROMPT="true"
-
 COMPLETION_WAITING_DOTS="true"
-
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-ZSH_THEME="clean"
+# Fix for compdump conflicts:
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
+# Plugins ☝️ must be sourced first!
 plugins=(
   dotenv
   git
   zsh-autosuggestions
   zsh-nvm
 )
-# Plugins ☝️ MUST be sourced first!
 source $ZSH/oh-my-zsh.sh
 
-export MANPATH="/usr/local/man:$MANPATH"
-
-# Custom executables:
+# ---------------------------------------
+# Paths & Custom Scripts
+# ---------------------------------------
 path+=("$HOME/scripts")
-
-# Custom scripts:
 [ -f "$HOME/scripts.zsh" ] && source "$HOME/scripts.zsh"
+typeset -U path  # Remove path duplicates
 
-# Prevent PATH from taking on duplicate entries:
-typeset -U path
+# ---------------------------------------
+# Node (nvm)
+# ---------------------------------------
+export NVM_AUTO_USE=true
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# ---------------------------------------
+# Ruby (rbenv)
+# ---------------------------------------
+if command -v rbenv &>/dev/null; then
+  eval "$(rbenv init - zsh)"
+fi
+
+# ---------------------------------------
+# Java (SDKMAN)
+# ---------------------------------------
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
