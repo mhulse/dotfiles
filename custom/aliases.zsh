@@ -2,8 +2,11 @@
 
 echo "✅ aliases.zsh loaded"
 
-alias gcob="git checkout \$(git branch | fzf)"
+# Reload the current shell (more thorough than just sourcing .zshrc)
+alias reload='exec zsh'
 
-alias c="clear"
+# Show processes listening on ports (great for figuring out "what's using port 3000?")
+alias wtf='lsof -i -P | grep LISTEN'
 
-alias inkscape="/Applications/Inkscape.app/Contents/MacOS/inkscape"
+# Quickly open your zsh config in VS Code
+alias zshrc='code ~/.zshrc'

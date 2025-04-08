@@ -18,13 +18,6 @@ function freshbrew () {
   brew deps --tree --installed
 }
 
-# Create new feature feature branch from name
-# b <feature branch name>
-function b () {
-  readonly name=${1:?"Missing name!"}
-  git checkout -b "feature/$name"
-}
-
 # Reload current session
 # https://unix.stackexchange.com/a/326948/67282
 # .
