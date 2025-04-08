@@ -3,6 +3,7 @@ echo "🔧 Setting up your dotfiles..."
 # ----------------------------------------
 # Symlink .zshrc and .zprofile
 # ----------------------------------------
+
 files=(
   ".zshrc"
   ".zprofile"
@@ -16,6 +17,7 @@ done
 # ----------------------------------------
 # Create base ~/.gitconfig if it doesn't exist
 # ----------------------------------------
+
 if [ ! -f ~/.gitconfig ]; then
   cat <<EOF > ~/.gitconfig
 [include]
@@ -29,6 +31,7 @@ fi
 # ----------------------------------------
 # Copy .gitignore_global if missing
 # ----------------------------------------
+
 if [ ! -f ~/.gitignore_global ]; then
   cp "$(pwd)/.gitignore_global" ~/.gitignore_global
   echo "✅ Copied default .gitignore_global from dotfiles"
@@ -40,6 +43,7 @@ fi
 # ----------------------------------------
 # Set Git global excludesfile if not already set
 # ----------------------------------------
+
 if ! git config --global core.excludesfile &>/dev/null; then
   git config --global core.excludesfile ~/.gitignore_global
   echo "✅ Set Git global core.excludesfile to ~/.gitignore_global"
