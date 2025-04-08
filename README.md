@@ -22,6 +22,12 @@ zsh + oh-my-zsh
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 
+1. [fzf](https://github.com/junegunn/fzf) `brew install fzf`
+
+1. [fd](https://github.com/sharkdp/fd) `brew install fd`
+
+1. [bat](https://github.com/sharkdp/bat) `brew install bat`
+
 Next, reload your profile by typeing `.` at the command prompt.
 
 Run:

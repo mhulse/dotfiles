@@ -1,117 +1,154 @@
-# http://git-scm.com/book/en/Customizing-Git-Git-Configuration
-# https://github.com/tiimgreen/github-cheat-sheet#git-configurations
-# http://haacked.com/archive/2014/07/28/github-flow-aliases/
-# Docs can be accessed via: `$ man git-<command>` (e.g. `$ man git-push`)
+# Git Config Reference
+# - http://git-scm.com/book/en/Customizing-Git-Git-Configuration
+# - https://github.com/tiimgreen/github-cheat-sheet#git-configurations
+# - http://haacked.com/archive/2014/07/28/github-flow-aliases/
+# Docs: `$ man git-<command>` (e.g. `$ man git-push`)
 
-# There are 3 levels of git config:
-#   1) Project
-#        Only available for the current project and stored in `.git/config` in the project’s directory:
-#        $ git config user.name "John Doe"
-#   2) Global
-#        Available for all projects for the current user and stored in `~/.gitconfig`:
-#        $ git config --global user.name "John Doe"
-#   3) System
-#        Available for all the users/projects and stored in `/etc/gitconfig`:
-#        $ git config --system user.name "John Doe"
+# ───────────────────────────────────────────────────────────────
+# Git Config Levels
+#   1) Project:  `.git/config` in the project
+#       $ git config user.name "John Doe"
+#   2) Global:   `~/.gitconfig`
+#       $ git config --global user.name "John Doe"
+#   3) System:   `/etc/gitconfig`
+#       $ git config --system user.name "John Doe"
+# ───────────────────────────────────────────────────────────────
 
+# ─── Aliases ────────────────────────────────────────────────────
 [alias]
+  # Add / Commit
   a = add
   aa = add --all
-  aliases = config --get-regexp alias
-  amend = commit --all --amend
-  bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
-  bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
-  br = branch
-  branches = branch -a
-  brm = branch --move # <new-branch-name>
   c = commit
   cam = !git add --all && git commit --message
-  cge = config --global --edit
-  cg = config --global # <option> <value>
   cm = commit --message
-  co = checkout
-  cob = checkout -b # <new-branch-name>
+  save = !git add --all && git commit -m 'SAVEPOINT'
+  wip = !git add --update && git commit --message="WIP"
+  wipe = !git add --all && git commit --quiet --message='WIPE SAVEPOINT' && git reset head~1 --hard
+  amend = commit --all --amend
+  undo = reset --mixed head~1
+
+  # Branching
+  br = branch
+  brm = branch --move
+  branches = branch -a
+  cob = checkout -b
   col = checkout -
   com = checkout main
-  comf = checkout origin/main # <file-path> OR <file-name>
+  comf = checkout origin/main
+  bclean = "!f() { git branch --merged ${1-main} | grep -v \" ${1-main}$\" | xargs -r git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
+
+  # Checkout
+  co = checkout
+
+  # Config Helpers
+  cg = config --global
+  cge = config --global --edit
+  aliases = config --get-regexp alias
+
+  # Diff / Grep / Log
   df = diff
-  fps = !git fetch && git pull && git status
   g = grep -I
   lg = log --patch
   lol = log --graph --oneline --date-order --decorate --color --all -n 250
-  # Focus on the most important information in this colorful, graphical display:
   loq = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-  pb = publish-branch
-  pf = push --force
+
+  # Pull / Push
+  fps = !git fetch && git pull && git status
   pn = push --set-upstream origin head
-   # Delete any local branches which have been deleted from the remote:
+  pf = push --force
   prune = fetch --prune
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+
+  # Remotes
+  remotes = remote --verbose
+  pb = publish-branch
+
+  # Rebase / Review
   rb = rbranch
   rbm = rebase main
   rbmi = rebase --interactive main
-  rc = rank-contributors
-  remotes = remote --verbose
   rv = review
+
+  # Stash / Show
+  sa = stash apply # apply latest stash
+  sp = stash pop # apply and drop latest stash
+  su = stash -u # stash including untracked files
+  sta = stash -a # stash all, including ignored files
+  sl = stash list # list all stashes
+  ss = stash show # show diff of latest stash
+  spm = "!f() { git stash push -u -m \"$@\"; }; f" # stash with custom message
+  sap = "!git stash list | fzf | cut -d: -f1 | xargs git stash apply" # fuzzy apply by title
+  spp = "!git stash list | fzf | cut -d: -f1 | xargs git stash pop" # fuzzy pop by title
+  sm = log --merges --oneline --graph --decorate
+
+  # Status / Tags
   s = status
-  # Stash new files you haven’t caught with a `git add` yet:
-  sa = stash save --include-untracked
-  save = !git add --all && git commit -m 'SAVEPOINT'
-  sm = show-merges
   st = status --short --branch
   tags = tag --list
-  # Set things up the way they were before the last commit:
-  undo = reset --mixed head~1
-  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
-  wip = !git add --update && git commit --message="WIP"
-  wipe = !git add --all && git commit --quiet --message='WIPE SAVEPOINT' && git reset head~1 --hard
+
+# ─── Core Settings ──────────────────────────────────────────────
 [core]
   autocrlf = false
-  # Treat spaces before tabs, lines that are indented with 8 or more spaces, and all kinds of trailing whitespace as an error:
-  whitespace = space-before-tab,indent-with-non-tab,trailing-space
-  # Watch for case changes:
   ignorecase = false
+  whitespace = space-before-tab,indent-with-non-tab,trailing-space
+  excludesfile = ~/.gitignore_global
+
+# ─── Push Settings ──────────────────────────────────────────────
 [push]
-  # Make it easier to push your local branch to a branch named the same thing in your target: remote.
   default = simple
-  # Always send your local tags up along with a git push:
   followTags = true
+
+# ─── Merge Settings ─────────────────────────────────────────────
 [merge]
+  #ff = only
+  #log = true
   #conflictstyle = diff3
-  # Ensures that you get an error unless every merge is fast-forward:
-  # ff = only
-  # log = true
-[rerere]
-  enabled = 1
+
+# ─── Rebase Behavior ────────────────────────────────────────────
 [branch]
   autosetuprebase = always
+
+# ─── Rerere ─────────────────────────────────────────────────────
+[rerere]
+  enabled = 1
+
+# ─── Color Settings ─────────────────────────────────────────────
 [color]
-  # Use colors in Git commands that are capable of colored output when
-  # outputting to the terminal:
   ui = auto
+
 [color "branch"]
   current = yellow reverse
   local = yellow
   remote = green
+
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
   old = red bold
   new = green bold
+
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
+
+# ─── Help Behavior ──────────────────────────────────────────────
 [help]
   autocorrect = 1
+
+# ─── Git LFS ────────────────────────────────────────────────────
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[status]
-  # Shows all of the files underneath a new directory during a git status:
-  showUntrackedFiles = all
-[transfer]
-  # Do some extra checks when receiving or sending changes (this can make transfers a bit slower):
-  fsckobjects = true
 
+# ─── Status Behavior ────────────────────────────────────────────
+[status]
+  showUntrackedFiles = all
+
+# ─── Transfer Behavior ──────────────────────────────────────────
+[transfer]
+  fsckobjects = true

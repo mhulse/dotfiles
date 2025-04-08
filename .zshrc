@@ -40,11 +40,18 @@ ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 # Plugins ☝️ must be sourced first!
 plugins=(
   dotenv
+  fzf
   git
   zsh-autosuggestions
   zsh-nvm
 )
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
+
+# Use fd with fzf for fast and clean file listing
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Use bat for rich previews inside fzf
+export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
 
 # ---------------------------------------
 # Paths & Custom Scripts
