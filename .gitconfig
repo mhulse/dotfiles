@@ -56,8 +56,9 @@
 
   # Pull / Push
   fps = !git fetch && git pull && git status
-  pn = push --set-upstream origin head
+  p = push
   pf = push --force
+  pn = push --set-upstream origin head
   prune = fetch --prune
   up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
