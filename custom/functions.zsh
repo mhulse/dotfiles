@@ -1,3 +1,7 @@
+#!/bin/zsh
+
+echo "✅ functions.zsh loaded"
+
 # Freshen up your HomeBrew!
 # frewshbrew [cask]
 function freshbrew () {

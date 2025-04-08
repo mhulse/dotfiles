@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 echo "✅ .zshrc loaded"
 
 # ---------------------------------------
@@ -5,11 +7,6 @@ echo "✅ .zshrc loaded"
 # ---------------------------------------
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export MANPATH="/usr/local/man:$MANPATH"
-
-# Add PostgreSQL 14 to PATH if installed
-if [ -d "/opt/homebrew/opt/postgresql@14/bin" ]; then
-  export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
-fi
 
 # ---------------------------------------
 # Oh My Zsh
@@ -45,24 +42,3 @@ typeset -U path  # Remove path duplicates
 # ---------------------------------------
 export NVM_AUTO_USE=true
 
-# Add global npm binaries to path (for node-gyp etc.)
-if command -v npm &>/dev/null; then
-  export PATH="$(npm bin -g):$PATH"
-fi
-
-# Add Yarn global bin paths if they exist
-[ -d "$HOME/.yarn/bin" ] && path+=("$HOME/.yarn/bin")
-[ -d "$HOME/.config/yarn/global/node_modules/.bin" ] && path+=("$HOME/.config/yarn/global/node_modules/.bin")
-
-# ---------------------------------------
-# Ruby (rbenv)
-# ---------------------------------------
-if command -v rbenv &>/dev/null; then
-  eval "$(rbenv init - zsh)"
-fi
-
-# ---------------------------------------
-# Java (SDKMAN)
-# ---------------------------------------
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
