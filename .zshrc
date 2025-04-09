@@ -22,8 +22,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set the custom plugins/themes directory (you can store your overrides here)
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
-# Use the minimal “clean” theme for a simple prompt
-ZSH_THEME="clean"
+# Use the “robbyrussell” theme for a no-overhead built-in prompt
+ZSH_THEME="robbyrussell"
 
 # Don’t show update prompt every few weeks
 DISABLE_UPDATE_PROMPT="true"
