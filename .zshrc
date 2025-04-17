@@ -2,6 +2,9 @@
 
 echo "✅ .zshrc loaded"
 
+# Fix for Ghostty remote SSH compatibility
+export TERM=xterm-256color
+
 # ---------------------------------------
 # Homebrew
 # ---------------------------------------
