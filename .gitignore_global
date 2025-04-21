@@ -10,6 +10,7 @@
 .idea/
 *.iml
 .vscode/
+*.code-workspace
 
 # Swap/temp files
 *~
