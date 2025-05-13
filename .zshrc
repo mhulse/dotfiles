@@ -2,6 +2,9 @@
 
 echo "✅ .zshrc loaded"
 
+# Ignore commands with leading space in shell history
+setopt HIST_IGNORE_SPACE
+
 # Fix for Ghostty remote SSH compatibility
 export TERM=xterm-256color
 
