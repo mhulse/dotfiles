@@ -9,8 +9,12 @@ export TERM=xterm-256color
 # Homebrew
 # ---------------------------------------
 
-# Set Homebrew environment variables (for Apple Silicon installs)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Load Homebrew environment variables for Apple Silicon or Intel installs
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)" # Silicon
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)" # Intel
+fi
 
 # Prepend custom manpath for manual pages
 export MANPATH="/usr/local/man:$MANPATH"
@@ -46,6 +50,7 @@ plugins=(
   fzf
   git
   zsh-autosuggestions
+  zsh-autocomplete
   zsh-nvm
 )
 source "$ZSH/oh-my-zsh.sh"

@@ -12,15 +12,45 @@ zsh + oh-my-zsh
 
 1. Clone repo in home directory, then run: [`install.zsh`](install.zsh)
 
+### Reload shell configuration
+
+After cloning the repo, reload your shell so `$ZSH_CUSTOM` is set:
+
+```bash
+source ~/.zshrc
+```
+
 ### Zsh
 
-**Important:** Install plugins and themes to `dotfiles/custom/`!
+**Important:**
+- Built-in Oh My Zsh themes (e.g. `robbyrussell`) require no installation
+- Only custom themes should be installed to `dotfiles/custom/themes/`
+- Plugins must be installed to `dotfiles/custom/plugins/`
+
+### Theme
+
+This setup uses the built-in Oh My Zsh theme:
+
+```zsh
+ZSH_THEME="robbyrussell"
+```
+
+### Plugins
+
+This repo defines `$ZSH_CUSTOM="$HOME/dotfiles/custom"`. The `custom/plugins/` and `custom/themes/` directories already exist and are gitignored.
+
+Install plugins into `custom/plugins/`:
 
 1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - `git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"`
 
 1. [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+    - `git clone https://github.com/marlonrichert/zsh-autocomplete "$ZSH_CUSTOM/plugins/zsh-autocomplete"`
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
+    - `git clone https://github.com/lukechilds/zsh-nvm "$ZSH_CUSTOM/plugins/zsh-nvm"`
+
+### Dependencies
 
 1. [fzf](https://github.com/junegunn/fzf) `brew install fzf`
 
@@ -28,11 +58,11 @@ zsh + oh-my-zsh
 
 1. [bat](https://github.com/sharkdp/bat) `brew install bat`
 
-Next, reload your profile by typeing `.` at the command prompt.
+### Git
 
 Run:
 
-```
+```zsh
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
@@ -47,3 +77,5 @@ git config --global user.name "Your Name"
     - Thumbnail preview: `defaults write com.apple.screencapture show-thumbnail -bool false`
 
 1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) is managed by zsh (don’t use Brew for nvm!). Once installed: `nvm upgrade`, `nvm revert`, `nvm install --lts` (latest “Long-Term Support” release), `nvm uninstall <version>`
+
+1. **Reload shell config:** this repo defines a ZLE hook so entering `.` runs `source ~/.zshrc` (stock zsh uses `.` to source a file, for example `. ~/.zshrc`)

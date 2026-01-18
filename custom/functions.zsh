@@ -23,7 +23,7 @@ function freshbrew () {
 # .
 function _accept-line () {
   if [[ $BUFFER == "." ]]; then
-    BUFFER="source ~/.zshrc"
+    BUFFER="source ${ZDOTDIR:-$HOME}/.zshrc"
   fi
   zle .accept-line
 }
