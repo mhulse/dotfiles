@@ -10,11 +10,14 @@ zsh + oh-my-zsh
 
 1. [Git](https://git-scm.com/download/mac) `brew install git`
 
+1. [Oh My Zsh](https://ohmyz.sh/) (required)
+    - `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
 1. Clone repo in home directory, then run: [`install.zsh`](install.zsh)
 
 ### Reload shell configuration
 
-After cloning the repo, reload your shell so `$ZSH_CUSTOM` is set:
+After running `install.zsh`, reload your shell so `$ZSH_CUSTOM` is set:
 
 ```bash
 source ~/.zshrc
@@ -23,6 +26,7 @@ source ~/.zshrc
 ### Zsh
 
 **Important:**
+
 - Built-in Oh My Zsh themes (e.g. `robbyrussell`) require no installation
 - Only custom themes should be installed to `dotfiles/custom/themes/`
 - Plugins must be installed to `dotfiles/custom/plugins/`
