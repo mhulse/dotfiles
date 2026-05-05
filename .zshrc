@@ -46,7 +46,6 @@ ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
 # Plugins ☝️ must be sourced first!
 plugins=(
-  dotenv
   fzf
   git
   zsh-autosuggestions
@@ -83,3 +82,11 @@ export NVM_AUTO_USE=true
 # Silence nvm’s startup message
 export NVM_SILENT=true
 
+# Re-enable corepack after nvm auto-switches Node versions
+autoload -U add-zsh-hook
+_fix_corepack() {
+  if [[ -f .nvmrc ]] && command -v corepack &>/dev/null; then
+    corepack enable 2>/dev/null
+  fi
+}
+add-zsh-hook chpwd _fix_corepack
