@@ -66,6 +66,10 @@ export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always {} | head
 
 # Add custom scripts directory to $PATH
 path+=("$HOME/scripts")
+
+# Add pseudo-bin directory to $PATH (used for generated app scripts like JetBrains CLI)
+path+=("$HOME/bin")
+
 # Source custom aliases/functions if the file exists
 [ -f "$HOME/scripts.zsh" ] && source "$HOME/scripts.zsh"
 
