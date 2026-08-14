@@ -1,72 +1,71 @@
-# Dotfiles zsh + oh-my-zsh
+# 🔧 dotfiles zsh oh-my-zsh
 
-## Installation
+## 📂 installation
 
-### System
+### system
 
-1. [Homebrew](https://brew.sh/)
-1. [Git](https://git-scm.com/download/mac) `brew install git`
-1. [Oh My Zsh](https://ohmyz.sh/) (required) `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+1. [Homebrew](https://brew.sh)
+1. [Git](https://git-scm.com) `brew install git`
+1. [Oh My Zsh](https://ohmyz.sh) (required) `sh -c "$(curl -fsSL https://githubusercontent.com)"`
 1. Clone repo in home directory, then run [`install.zsh`](install.zsh)
 
-### Reload shell configuration
+### reload shell configuration
 
-After running `install.zsh`, reload your shell so `$ZSH_CUSTOM` is set:
+after running install.zsh reload your shell so zsh_custom is set
 
 ```bash
 source ~/.zshrc
 ```
 
-### Zsh
+### zsh
 
-**Important:**
+important
 
-- Built-in Oh My Zsh themes (e.g. `robbyrussell`) require no installation
-- Only custom themes should be installed to `dotfiles/custom/themes/`
-- Plugins must be installed to `dotfiles/custom/plugins/`
+- built-in oh my zsh themes require no installation
+- only custom themes should be installed to dotfiles/custom/themes/
+- plugins must be installed to dotfiles/custom/plugins/
 
-### Theme
+### theme
 
-This setup uses the built-in Oh My Zsh theme:
+this setup uses the built-in oh my zsh theme
 
 ```zsh
 ZSH_THEME="robbyrussell"
 ```
 
-### Plugins
+### plugins
 
-This repo defines `$ZSH_CUSTOM="$HOME/dotfiles/custom"`. The `custom/plugins/` and `custom/themes/` directories already exist and are gitignored. Install plugins into `custom/plugins/`:
+this repo defines zsh_custom in your home dotfiles folder. the custom/plugins/ and custom/themes/ directories already exist and are gitignored. install plugins into custom/plugins/
 
-1. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) `git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"`
-1. [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) `git clone https://github.com/marlonrichert/zsh-autocomplete "$ZSH_CUSTOM/plugins/zsh-autocomplete"`
-1. [zsh-nvm](https://github.com/lukechilds/zsh-nvm) `git clone https://github.com/lukechilds/zsh-nvm "$ZSH_CUSTOM/plugins/zsh-nvm"`
+1. [zsh-autosuggestions](https://github.com) `git clone https://github.com "$ZSH_CUSTOM/plugins/zsh-autosuggestions"`
+1. [zsh-nvm](https://github.com) `git clone https://github.com "$ZSH_CUSTOM/plugins/zsh-nvm"`
 
-### Customization
+### customization
 
-The configuration looks for an optional, machine-specific file in your home directory:
-- `~/scripts.zsh` for local aliases, API keys, or private functions
+the configuration looks for an optional machine-specific file in your home directory
+- `~/scripts.zsh` for local aliases, api keys, or private functions
 
-### Dependencies
+### dependencies
 
-1. [fzf](https://github.com/junegunn/fzf) `brew install fzf`
-1. [fd](https://github.com/sharkdp/fd) `brew install fd`
-1. [bat](https://github.com/sharkdp/bat) `brew install bat`
+1. [fzf](https://github.com) `brew install fzf`
+1. [fd](https://github.com) `brew install fd`
+1. [bat](https://github.com) `brew install bat`
 
-### Git
+### git
 
-Run:
+run
 
 ```zsh
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
-## Tips
+## 💡 tips
 
-1. **Always show hidden files:** `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
-2. **Disable screen capture drop shadow:** `defaults write com.apple.screencapture disable-shadow -bool true`
-3. **Disable screen capture thumbnail preview:** `defaults write com.apple.screencapture show-thumbnail -bool false`
-4. **Manage nvm via zsh plugin:** Run `nvm upgrade`, `nvm revert`, `nvm install --lts`, or `nvm uninstall <version>`
-5. **Reload shell config rapidly:** Enter `.` instead of typing the full `source ~/.zshrc` command
-6. **Store generated app CLI scripts:** Point third-party tool locations like JetBrains to `~/bin`
-7. **Keep personal scripts separate:** Drop your custom hand-written tools into `~/scripts/`
+1. always show hidden files `defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder`
+2. disable screen capture drop shadow `defaults write com.apple.screencapture disable-shadow -bool true`
+3. disable screen capture thumbnail preview `defaults write com.apple.screencapture show-thumbnail -bool false`
+4. manage nvm via zsh plugin run nvm upgrade nvm revert nvm install --lts or nvm uninstall version
+5. reload shell config rapidly enter dot instead of typing the full source command
+6. store generated app cli scripts point third-party tool locations like jetbrains to bin directory
+7. keep personal scripts separate drop your custom hand-written tools into scripts directory

@@ -1,20 +1,23 @@
 #!/bin/zsh
 
-echo "✅ aliases.zsh loaded"
+# print load confirmation only during interactive user sessions
+if [[ -o interactive ]]; then
+  echo "✅ aliases.zsh loaded"
+fi
 
-# Reload the current shell (more thorough than just sourcing .zshrc)
+# reload the current shell more thorough than just sourcing zshrc
 alias reload='exec zsh'
 
-# Show processes listening on ports (great for figuring out "what's using port 3000?")
+# show processes listening on ports great for figuring out what is using port 3000
 alias wtf='lsof -i -P | grep LISTEN'
 
-# Quickly open your zsh config in VS Code
+# quickly open your zsh config in vs code
 alias zshrc='code ~/.zshrc'
 
-# Fuzzy file picking
+# fuzzy file picking
 alias ff='fzf'
 
-# Common git aliases
+# common git aliases
 alias gaa='git aa'
 alias gcam='git cam'
 alias gcob='git cob'

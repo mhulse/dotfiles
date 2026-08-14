@@ -1,9 +1,11 @@
 #!/bin/zsh
 
-echo "✅ functions.zsh loaded"
+# print load confirmation only during interactive user sessions
+if [[ -o interactive ]]; then
+  echo "✅ functions.zsh loaded"
+fi
 
-# Freshen up your HomeBrew!
-# frewshbrew [cask]
+# freshen up your homebrew packages and optional casks
 function freshbrew () {
   brew doctor
   brew update
@@ -13,14 +15,13 @@ function freshbrew () {
   fi
   brew cleanup
   brew doctor
-  # List installed dependencies as tree:
+  
+  # list installed dependencies as a tree
   echo "Installed:"
   brew deps --tree --installed
 }
 
-# Reload current session
-# https://unix.stackexchange.com/a/326948/67282
-# .
+# reload current session rapidly when typing a single dot
 function _accept-line () {
   if [[ $BUFFER == "." ]]; then
     BUFFER="source ${ZDOTDIR:-$HOME}/.zshrc"

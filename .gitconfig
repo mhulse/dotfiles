@@ -1,22 +1,22 @@
-# Git Config Reference
-# - http://git-scm.com/book/en/Customizing-Git-Git-Configuration
-# - https://github.com/tiimgreen/github-cheat-sheet#git-configurations
-# - http://haacked.com/archive/2014/07/28/github-flow-aliases/
-# Docs: `$ man git-<command>` (e.g. `$ man git-push`)
+# git config reference
+# http://git-scm.com/book/en/Customizing-Git-Git-Configuration
+# https://github.com/tiimgreen/github-cheat-sheet#git-configurations
+# http://haacked.com/archive/2014/07/28/github-flow-aliases/
+# docs man git-command e.g. man git-push
 
-# ───────────────────────────────────────────────────────────────
-# Git Config Levels
-#   1) Project:  `.git/config` in the project
-#       $ git config user.name "John Doe"
-#   2) Global:   `~/.gitconfig`
-#       $ git config --global user.name "John Doe"
-#   3) System:   `/etc/gitconfig`
-#       $ git config --system user.name "John Doe"
-# ───────────────────────────────────────────────────────────────
+# ---------------------------------------------------------------
+# git config levels
+# 1 project .git/config in the project
+# git config user.name John Doe
+# 2 global ~/.gitconfig
+# git config --global user.name John Doe
+# 3 system /etc/gitconfig
+# git config --system user.name John Doe
+# ---------------------------------------------------------------
 
-# ─── Aliases ────────────────────────────────────────────────────
+# aliases
 [alias]
-  # Add / Commit
+  # add commit
   a = add
   aa = add --all
   c = commit
@@ -28,7 +28,7 @@
   amend = commit --all --amend
   undo = reset --mixed head~1
 
-  # Branching
+  # branching
   br = branch
   brm = branch --move
   branches = branch -a
@@ -39,22 +39,22 @@
   bclean = "!f() { git branch --merged ${1-main} | grep -v \" ${1-main}$\" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
 
-  # Checkout
+  # checkout
   co = checkout
 
-  # Config Helpers
+  # config helpers
   cg = config --global
   cge = config --global --edit
   aliases = config --get-regexp alias
 
-  # Diff / Grep / Log
+  # diff grep log
   df = diff
   g = grep -I
   lg = log --patch
   lol = log --graph --oneline --date-order --decorate --color --all -n 250
   loq = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
-  # Pull / Push
+  # pull push
   fps = !git fetch && git pull && git status
   p = push
   pf = push --force
@@ -62,21 +62,21 @@
   prune = fetch --prune
   up = !git pull --rebase --prune $@ && git submodule update --init --recursive
 
-  # Remotes
+  # remotes
   remotes = remote --verbose
   pb = publish-branch
 
-  # Rebase / Review
-  rb = rbranch
+  # rebase review
+  rb = rebase
   rbm = rebase main
   rbmi = rebase --interactive main
   rv = review
 
-  # Stash / Show
+  # stash show
   sa = stash apply # apply latest stash
   sp = stash pop # apply and drop latest stash
   su = stash -u # stash including untracked files
-  sta = stash -a # stash all, including ignored files
+  sta = stash -a # stash all including ignored files
   sl = stash list # list all stashes
   ss = stash show # show diff of latest stash
   spm = "!f() { git stash push -u -m \"$@\"; }; f" # stash with custom message
@@ -84,38 +84,38 @@
   spp = "!git stash list | fzf | cut -d: -f1 | xargs git stash pop" # fuzzy pop by title
   sm = log --merges --oneline --graph --decorate
 
-  # Status / Tags
+  # status tags
   s = status
   st = status --short --branch
   tags = tag --list
 
-# ─── Core Settings ──────────────────────────────────────────────
+# core settings
 [core]
   autocrlf = false
   ignorecase = false
   whitespace = space-before-tab,indent-with-non-tab,trailing-space
   excludesfile = ~/.gitignore_global
 
-# ─── Push Settings ──────────────────────────────────────────────
+# push settings
 [push]
   default = simple
   followTags = true
 
-# ─── Merge Settings ─────────────────────────────────────────────
+# merge settings
 [merge]
   #ff = only
   #log = true
   #conflictstyle = diff3
 
-# ─── Rebase Behavior ────────────────────────────────────────────
+# rebase behavior
 [branch]
   autosetuprebase = always
 
-# ─── Rerere ─────────────────────────────────────────────────────
+# rerere
 [rerere]
   enabled = 1
 
-# ─── Color Settings ─────────────────────────────────────────────
+# color settings
 [color]
   ui = auto
 
@@ -135,21 +135,21 @@
   changed = green
   untracked = cyan
 
-# ─── Help Behavior ──────────────────────────────────────────────
+# help behavior
 [help]
   autocorrect = 1
 
-# ─── Git LFS ────────────────────────────────────────────────────
+# git lfs
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
 
-# ─── Status Behavior ────────────────────────────────────────────
+# status behavior
 [status]
   showUntrackedFiles = all
 
-# ─── Transfer Behavior ──────────────────────────────────────────
+# transfer behavior
 [transfer]
   fsckobjects = true

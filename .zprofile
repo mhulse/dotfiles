@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Source .zshrc on login shells ONLY if not interactive (prevents double-sourcing)
+# source zshrc on login shells only if not interactive to prevent double sourcing
 if [[ -o login && ! -o interactive ]]; then
   [[ -f ~/.zshrc ]] && source ~/.zshrc
 fi

@@ -1,4 +1,4 @@
-# These ignores are specific to the dotfiles repo:
+# these ignores are specific to the dotfiles repo
 .DS_Store
 .DS_Store?
 .Spotlight-V100

@@ -1,96 +1,106 @@
 #!/bin/zsh
 
-echo "✅ .zshrc loaded"
-
-# Fix for Ghostty remote SSH compatibility
-export TERM=xterm-256color
-
-# ---------------------------------------
-# Homebrew
-# ---------------------------------------
-
-# Load Homebrew environment variables for Apple Silicon or Intel installs
-if [ -x /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)" # Silicon
-elif [ -x /usr/local/bin/brew ]; then
-  eval "$(/usr/local/bin/brew shellenv)" # Intel
+# print load confirmation only during interactive user sessions
+if [[ -o interactive ]]; then
+  echo "✅ .zshrc loaded"
 fi
 
-# Prepend custom manpath for manual pages
+# fix remote ssh compatibility without breaking local terminal features
+if [[ -n $SSH_CONNECTION ]]; then
+  export TERM=xterm-256color
+fi
+
+# ---------------------------------------
+# homebrew
+# ---------------------------------------
+
+# load homebrew environment variables for apple silicon or intel installs
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)" 
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)" 
+fi
+
+# prepend custom manpath for manual pages
 export MANPATH="/usr/local/man:$MANPATH"
 
 # ---------------------------------------
-# Oh My Zsh
+# oh my zsh
 # ---------------------------------------
 
-# Set the base directory for Oh My Zsh
+# set base directory for oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set the custom plugins/themes directory (you can store your overrides here)
+# set custom plugins and themes directory
 export ZSH_CUSTOM="$HOME/dotfiles/custom"
 
-# Use the “robbyrussell” theme for a no-overhead built-in prompt
+# use built in robbyrussell theme for no overhead
 ZSH_THEME="robbyrussell"
 
-# Don’t show update prompt every few weeks
+# disable update prompts and optimize git performance
 DISABLE_UPDATE_PROMPT="true"
-
-# Show dots while waiting for command completions
 COMPLETION_WAITING_DOTS="true"
-
-# Disable Git status check for untracked files (makes prompt faster)
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Prevent compdump conflicts
+# prevent compdump conflicts
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
-# Plugins ☝️ must be sourced first!
+# configure lazy loading for nvm plugin before sourcing framework
+zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' autoload yes
+
+# define and source shell plugins
 plugins=(
   fzf
   git
   zsh-autosuggestions
-  zsh-autocomplete
   zsh-nvm
 )
 source "$ZSH/oh-my-zsh.sh"
 
-# Use fd with fzf for fast and clean file listing
-export FZF_DEFAULT_COMMAND='fd --type f'
-
-# Use bat for rich previews inside fzf
-export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
-
 # ---------------------------------------
-# Paths & Custom Scripts
+# search settings fzf
 # ---------------------------------------
 
-# Add custom scripts directory to $PATH
+# clean default settings for general fzf searches using fd
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+
+# apply heavy bat preview strictly to file finder shortcut ctrl t
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
+
+# bind arrow keys to cycle only through past commands matching your typed prefix
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# bind standard arrow sequences
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+# bind application mode arrow sequences (covers iterm2 alternative modes)
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
+
+# ---------------------------------------
+# paths and custom scripts
+# ---------------------------------------
+
+# add custom scripts and executable directories to system path
 path+=("$HOME/scripts")
-
-# Add pseudo-bin directory to $PATH (used for generated app scripts like JetBrains CLI)
 path+=("$HOME/bin")
 
-# Source custom aliases/functions if the file exists
+# source custom aliases or functions file if it exists
 [ -f "$HOME/scripts.zsh" ] && source "$HOME/scripts.zsh"
 
-# Remove path duplicates
+# remove system path duplicates
 typeset -U path
 
 # ---------------------------------------
-# Node (nvm + yarn)
+# node management nvm yarn
 # ---------------------------------------
 
-# Automatically switch Node versions when entering a directory with an .nvmrc
+# automatically switch node versions using nvmrc file quietly
 export NVM_AUTO_USE=true
-
-# Silence nvm’s startup message
 export NVM_SILENT=true
-
-# Re-enable corepack after nvm auto-switches Node versions
-autoload -U add-zsh-hook
-_fix_corepack() {
-  if [[ -f .nvmrc ]] && command -v corepack &>/dev/null; then
-    corepack enable 2>/dev/null
-  fi
-}
-add-zsh-hook chpwd _fix_corepack
