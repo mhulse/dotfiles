@@ -41,6 +41,7 @@ ZSH_THEME="robbyrussell"
 DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+ENABLE_CORRECTION="true"
 
 # prevent compdump conflicts
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
@@ -62,24 +63,29 @@ source "$ZSH/oh-my-zsh.sh"
 # search settings fzf
 # ---------------------------------------
 
-# clean default settings for general fzf searches using fd
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+# clean default settings for general fzf searches using fd if available
+if (( $+commands[fd] )); then
+  export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
-# apply heavy bat preview strictly to file finder shortcut ctrl t
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
+# apply heavy bat preview strictly to file finder shortcut ctrl t if bat is available
+if (( $+commands[bat] )); then
+  export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
+fi
+
+# apply directory tree preview strictly to folder finder shortcut alt c if tree is available
+if (( $+commands[tree] )); then
+  export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+fi
 
 # bind arrow keys to cycle only through past commands matching your typed prefix
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
-# bind standard arrow sequences
 bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
-
-# bind application mode arrow sequences (covers iterm2 alternative modes)
 bindkey '^[OA' up-line-or-beginning-search
 bindkey '^[OB' down-line-or-beginning-search
 
@@ -91,11 +97,25 @@ bindkey '^[OB' down-line-or-beginning-search
 path+=("$HOME/scripts")
 path+=("$HOME/bin")
 
+# add homebrew client database tools to path if libpq is present
+if [ -d "/opt/homebrew/opt/libpq/bin" ]; then
+  path+=("/opt/homebrew/opt/libpq/bin")
+fi
+
 # source custom aliases or functions file if it exists
 [ -f "$HOME/scripts.zsh" ] && source "$HOME/scripts.zsh"
 
 # remove system path duplicates
 typeset -U path
+
+# ---------------------------------------
+# system tools initialization
+# ---------------------------------------
+
+# initialize zoxide smart jump tool if available
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
 
 # ---------------------------------------
 # node management nvm yarn

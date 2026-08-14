@@ -17,6 +17,9 @@ alias zshrc='code ~/.zshrc'
 # fuzzy file picking
 alias ff='fzf'
 
+# reclaim system disk storage by wiping deep node and yarn caches
+alias node-vacuum='rm -rf node_modules yarn.lock package-lock.json && yarn cache clean && npm cache clean --force'
+
 # common git aliases
 alias gaa='git aa'
 alias gcam='git cam'

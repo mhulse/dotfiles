@@ -47,9 +47,9 @@ the configuration looks for an optional machine-specific file in your home direc
 
 ### dependencies
 
-1. [fzf](https://github.com) `brew install fzf`
-1. [fd](https://github.com) `brew install fd`
-1. [bat](https://github.com) `brew install bat`
+```bash
+brew install fzf fd bat tree zoxide
+```
 
 ### git
 
@@ -66,6 +66,9 @@ git config --global user.name "Your Name"
 2. disable screen capture drop shadow `defaults write com.apple.screencapture disable-shadow -bool true`
 3. disable screen capture thumbnail preview `defaults write com.apple.screencapture show-thumbnail -bool false`
 4. manage nvm via zsh plugin run nvm upgrade nvm revert nvm install --lts or nvm uninstall version
-5. reload shell config rapidly enter dot instead of typing the full source command
-6. store generated app cli scripts point third-party tool locations like jetbrains to bin directory
-7. keep personal scripts separate drop your custom hand-written tools into scripts directory
+5. jump to directories with zoxide instead of cd type z and a partial name like z canvas
+6. search files with ctrl t and search directories with alt c to see dynamic sidebar previews
+7. clear corrupt environments quickly run node-vacuum to drop node_modules and wipe dependency caches
+8. reload shell config rapidly enter dot instead of typing the full source command
+9. store generated app cli scripts point third-party tool locations like jetbrains to bin directory
+10. keep personal scripts separate drop your custom hand-written tools into scripts directory
