@@ -46,16 +46,11 @@ ENABLE_CORRECTION="true"
 # prevent compdump conflicts
 ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${(%):-%m}-${ZSH_VERSION}"
 
-# configure lazy loading for nvm plugin before sourcing framework
-zstyle ':omz:plugins:nvm' lazy yes
-zstyle ':omz:plugins:nvm' autoload yes
-
 # define and source shell plugins
 plugins=(
   fzf
   git
   zsh-autosuggestions
-  zsh-nvm
 )
 source "$ZSH/oh-my-zsh.sh"
 
@@ -118,9 +113,10 @@ if (( $+commands[zoxide] )); then
 fi
 
 # ---------------------------------------
-# node management nvm yarn
+# node management fnm
 # ---------------------------------------
 
-# automatically switch node versions using nvmrc file quietly
-export NVM_AUTO_USE=true
-export NVM_SILENT=true
+# select the project version from .node-version or .nvmrc
+if (( $+commands[fnm] )); then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
